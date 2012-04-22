@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="liftManagedTestLib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib_managed/scala_2.9.0-1/test" />
+      <root url="file://$PROJECT_DIR$/lib_managed/scala_2.9.0-1/test" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib_managed/scala_2.9.0-1/test" recursive="false" />
+  </library>
+</component>

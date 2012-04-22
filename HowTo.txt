@@ -1,0 +1,24 @@
+Prerequisites 
+
+IntelliJ 11
+scala plugin
+latest lift downloaded
+1.7 jdk
+
+
+Setting up from scratch
+
+- Download latest SBT install
+
+- run :-
+sbt update jetty-run ~prepare-webapp
+
+- setup intelliJ project pointing at that folder
+
+- Override scala dependency with a full scala SDK
+ScalaRoyalMail\project\boot\scala-2.9.0-1
+
+- added the lib-managed main and test libraries to the intelliJ project
+
+
+Setting up after pulling from Github

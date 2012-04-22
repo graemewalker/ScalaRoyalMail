@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="liftManagedCompileLib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib_managed/scala_2.9.0-1/compile" />
+      <root url="file://$PROJECT_DIR$/lib_managed/scala_2.9.0-1/compile" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib_managed/scala_2.9.0-1/compile" recursive="false" />
+  </library>
+</component>
