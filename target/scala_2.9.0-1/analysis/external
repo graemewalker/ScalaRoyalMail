@@ -1,0 +1,10 @@
+#External Dependencies
+#Tue Apr 24 22:00:26 HKT 2012
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/lib_managed/scala_2.9.0-1/compile/lift-common_2.9.0-1-2.4.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/snippet/HelloWorld.scala\:src/main/scala/code/model/User.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/lib_managed/scala_2.9.0-1/compile/lift-proto_2.9.0-1-2.4.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/model/User.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/lib_managed/scala_2.9.0-1/compile/lift-db_2.9.0-1-2.4.jar=src/main/scala/bootstrap/liftweb/Boot.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/lib_managed/scala_2.9.0-1/compile/lift-util_2.9.0-1-2.4.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/snippet/HelloWorld.scala\:src/main/scala/code/lib/DependencyFactory.scala\:src/main/scala/code/model/User.scala
+/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/snippet/HelloWorld.scala\:src/main/scala/code/lib/DependencyFactory.scala\:src/main/scala/code/model/User.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/lib_managed/scala_2.9.0-1/compile/lift-webkit_2.9.0-1-2.4.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/lib/DependencyFactory.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/lib_managed/scala_2.9.0-1/compile/lift-mapper_2.9.0-1-2.4.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/model/User.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/project/boot/scala-2.9.0-1/lib/scala-library.jar=src/main/scala/bootstrap/liftweb/Boot.scala\:src/main/scala/code/snippet/HelloWorld.scala\:src/main/scala/code/lib/DependencyFactory.scala\:src/main/scala/code/model/User.scala

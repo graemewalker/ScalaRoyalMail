@@ -1,0 +1,5 @@
+#External Dependencies
+#Tue Apr 24 22:00:21 HKT 2012
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/project/boot/scala-2.7.7/org.scala-tools.sbt/sbt/0.7.7/sbt_2.7.7-0.7.7.jar=LiftProject.scala
+/Users/lloyd/IdeaProjects/ScalaRoyalMail/project/boot/scala-2.7.7/lib/scala-library.jar=LiftProject.scala
+/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar=LiftProject.scala
