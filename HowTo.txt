@@ -22,3 +22,7 @@ ScalaRoyalMail\project\boot\scala-2.9.0-1
 
 
 Setting up after pulling from Github
+Re-run :-
+sbt update jetty-run ~prepare-webapp
+goto http://localhost:????/???? to check the webapp runs
+run HelloWorldTest to check if you can run some scala from intelliJ
