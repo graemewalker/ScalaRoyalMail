@@ -1,6 +1,6 @@
 import server.model._
 import server.model.Underlying._
-import server.{MarketDataFeed, TradeSource}
+import server.{JavaTradeSource, MarketDataFeed, TradeSource}
 ;
 
 //val singleProduct = Single("single1", Underlying.CHEUNG);
@@ -21,8 +21,10 @@ import server.{MarketDataFeed, TradeSource}
 //
 //basketMatcher(basketProduct, basketProductWithKi, singleProduct)
 
-val tradeSource = new TradeSource();
 
+val tradeSource = new TradeSource();
+val javaTradeSource = new JavaTradeSource()
+sys.exit()
 
 //def myCallback = (price: Double) => {
 //  println("Got called back")
