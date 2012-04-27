@@ -13,7 +13,7 @@ object TradeInputActor extends Actor {
       receive {
         case message: TradeMessage => {
           message.tradeDetails match {
-            case ko: HasKo => sendToExceptionQueue("Unsupported Barrier Type ")
+            case ko: HasKickIn => sendToExceptionQueue("Unsupported Barrier Type ")
             case trade => sendToTradeStore(trade)
           }
         }
@@ -36,4 +36,4 @@ object TradeInputActor extends Actor {
 }
 
 
-//case kicker @(_: HasKi | _: HasKo) => println(kicker)
+//case kicker @(_: HasKnockOut | _: HasKickIn) => println(kicker)

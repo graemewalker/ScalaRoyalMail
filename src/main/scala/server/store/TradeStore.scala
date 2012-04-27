@@ -12,7 +12,16 @@ object TradeStore {
     trades += trade;
 
     trade match{
-      case trade : HasBarrier => MarketDataFeed.registerForUpdates(trade.underlyings, trade.receiveMarketPriceAndCheckForBreach());
+      case trade : HasBarrier => MarketDataFeed.registerForUpdates(trade.underlyings, trade.changed)
+      case _ =>
+
+    }
+    //Notify the gui that a trade has been added via the listener pattern (using Trait loveliness)
+  }
+
+  def breachedTrades : Set[HasBarrier] = {
+    trades.collect {
+      case t:HasBarrier if t.breached => t
     }
   }
 }

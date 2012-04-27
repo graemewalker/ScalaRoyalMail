@@ -1,5 +1,6 @@
 package server.model
 
-class Underlying {
-
+object Underlying extends Enumeration {
+  type Underlying = Value
+  val CLP, CHEUNG, HSBC = Value
 }
