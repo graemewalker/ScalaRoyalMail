@@ -36,10 +36,8 @@ trait HasKnockOut extends HasBarrier with Trade {
       return
     if (price > strikePrice) {
       breached = true
-      println(this + ": Price recieved [" + price + "], breach occured for barrier [" + strikePrice + "]")
-      return
+      println(this + ": " + description() + " breached barrier [" + strikePrice + "]")
     }
-//    println(this + ": Price recieved [" + price + "], not breaching barrier [" + strikePrice + "]")
   }
 
   override def description(): String = {

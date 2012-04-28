@@ -1,8 +1,9 @@
 package server
 
 import collection.immutable.HashMap
-import model.store.TradeStore
 import model.Underlying._
+
+case class Tick(underlying: Underlying, price: Double)
 
 object MarketDataFeed {
   type Callback = Double => Unit;
@@ -16,7 +17,6 @@ object MarketDataFeed {
 
     currentListeners.getOrElse(List()) //implicit return value
   }
-
 
   // defaulting to synchronized on this
   def registerForUpdates(underlyings: List[Underlying], callback: Callback) {
@@ -33,44 +33,12 @@ object MarketDataFeed {
     }
   }
 
-  def notifyListenersOfTick(underlying: Underlying, price: Double) {
-    println()
-    println("TICK for [" + underlying + "] @" + price);
-    for (callback <- getCurrentListenersOrEmptyList(underlying)) {
-      callback(price)
-    }
-  }
-
-  // TODO: Futures for define ticker events
-
-  val tickThread: Thread = new Thread() {
-    override def run() {
-      //      while (true) {
-      //        notifyListenersOfTick(CLP, 34.34)
-      //        Thread.sleep(2000)
-      Thread.sleep(2000)
-      notifyListenersOfTick(HSBC, 70.00)
-      Thread.sleep(2000)
-      notifyListenersOfTick(HSBC, 72.00)
-      Thread.sleep(2000)
-      notifyListenersOfTick(HSBC, 75.00)
-      Thread.sleep(2000)
-      notifyListenersOfTick(HSBC, 76.00)
-      Thread.sleep(2000)
-      notifyListenersOfTick(HSBC, 81.00)
-      Thread.sleep(2000)
-      //        notifyListenersOfTick(CHEUNG, 100.11)
-      //        Thread.sleep(3000)
-
-      //      }
-
-      println("\nThe following have breached:")
-      for ( breached <- TradeStore.breachedTrades){
-        println(breached)
-      }
-    }
+  def tick(tick: Tick) {
+    println("\n>>> MARKET MOVING >>>")
+    println(tick.underlying + " @" + tick.price)
+    getCurrentListenersOrEmptyList(tick.underlying).foreach(callback => callback(tick.price))
   }
 
 
-  tickThread.start();
+
 }

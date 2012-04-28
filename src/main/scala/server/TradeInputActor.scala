@@ -2,7 +2,7 @@ package server
 
 import actors.Actor
 import model._
-import store.TradeStore
+import model.store.TradeStore
 
 
 case class TradeMessage(origin: String, extRef: String, tradeDetails: Trade);

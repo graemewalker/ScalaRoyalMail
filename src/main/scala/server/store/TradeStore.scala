@@ -19,9 +19,25 @@ object TradeStore {
     //Notify the gui that a trade has been added via the listener pattern (using Trait loveliness)
   }
 
-  def breachedTrades : Set[HasBarrier] = {
+  def breachedBarrierTrades : Set[HasBarrier] = {
     trades.collect {
-      case t:HasBarrier if t.breached => t
+      case trade:HasBarrier if trade.breached => trade
     }
+  }
+
+  def nonBreachedBarrierTrades : Set[HasBarrier] = {
+    trades.collect {
+      case trade:HasBarrier if !trade.breached => trade
+    }
+  }
+
+  def allBarrierTrades : Set[HasBarrier] = {
+    trades.collect {
+      case trade: HasBarrier => trade
+    }
+  }
+
+  def nonBarrierTrades : Set[Trade] = {
+    trades -- allBarrierTrades
   }
 }

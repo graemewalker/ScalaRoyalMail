@@ -1,6 +1,6 @@
-import server.model._
+import server._
+import model.store.TradeStore
 import server.model.Underlying._
-import server.{JavaTradeSource, MarketDataFeed, TradeSource}
 ;
 
 //val singleProduct = Single("single1", Underlying.CHEUNG);
@@ -21,9 +21,13 @@ import server.{JavaTradeSource, MarketDataFeed, TradeSource}
 //
 //basketMatcher(basketProduct, basketProductWithKi, singleProduct)
 
-
+val demoHelper = new DemoHelper()
 val tradeSource = new TradeSource();
 val javaTradeSource = new JavaTradeSource()
+
+val demoMarketTicks = Tick(HSBC, 70.0) :: Tick(HSBC, 72.0) :: Tick(HSBC, 75.0) :: Tick(HSBC, 76.0) :: Tick(HSBC, 81.0) :: Nil
+demoHelper.runTickSequence(demoMarketTicks, 2000);
+demoHelper.printTradeStoreSummary()
 sys.exit()
 
 //def myCallback = (price: Double) => {
