@@ -10,3 +10,5 @@ lift_proto.db.lock.db
 .DS_Store
 
 out/production/ScalaRoyalMail/server/JavaTradeSource.class
+
+lift_proto.db.h2.db
