@@ -21,5 +21,7 @@ class DemoHelper {
     TradeStore.breachedBarrierTrades.foreach(breachedTrade => println(breachedTrade))
     println("\nBarrier trades which have NOT breached:")
     TradeStore.nonBreachedBarrierTrades.foreach(breachedTrade => println(breachedTrade))
+    println("\nNon Barrier Trades:")
+    TradeStore.nonBarrierTrades.foreach(trade => println(trade))
   }
 }

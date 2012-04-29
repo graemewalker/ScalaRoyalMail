@@ -16,7 +16,7 @@ class TradeSource {
 
   TradeInputActor ! new TradeMessage("fromBob", "bob2", new Single("id3", HSBC, 80) with HasKnockOut)
 
-  TradeInputActor ! new TradeMessage("fromBob", "bob2", new Basket("id3", List(CHEUNG, HSBC), 85) with HasKnockOut)
+  TradeInputActor ! new TradeMessage("fromBob", "bob2", new Basket("id4", List(CHEUNG, HSBC), 85) with HasKnockOut)
 
 
   //  def runThisForever( f: => Unit){

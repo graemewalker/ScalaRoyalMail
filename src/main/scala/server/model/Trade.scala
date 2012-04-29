@@ -1,6 +1,7 @@
 package server.model
 
 import scala._
+import code.comet.TradeActivityServer
 import server.BarrierListener
 import server.model.Underlying._
 
@@ -36,12 +37,17 @@ trait HasKnockOut extends HasBarrier with Trade {
       return
     if (price > strikePrice) {
       breached = true
+      TradeActivityServer ! this
       println(this + ": " + description() + " breached barrier [" + strikePrice + "]")
     }
   }
 
   override def description(): String = {
     "Knock Out"
+  }
+
+  override def toString(): String = {
+    super.toString + " breached = " + breached
   }
 
   // override def toString = "blah!"
