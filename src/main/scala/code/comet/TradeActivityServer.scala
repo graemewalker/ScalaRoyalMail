@@ -6,12 +6,12 @@ import server.model.Trade
 import collection.immutable.HashMap
 
 object TradeActivityServer extends LiftActor with ListenerManager{
-  private var trades = Map[String, String]()
+  private var trades = Map[String, Trade]()
 
-  def createUpdate = Vector[String]() ++ trades.values
+  def createUpdate = Vector[Trade]() ++ trades.values
 
   override def lowPriority = {
-    case trade : Trade => trades += (trade.id -> trade.toString); updateListeners(); println("Activity server got  update: trades size = " + trades.size)
+    case trade : Trade => trades += (trade.id -> trade); updateListeners(); println("Activity server got  update: trades size = " + trades.size)
   }
 
 

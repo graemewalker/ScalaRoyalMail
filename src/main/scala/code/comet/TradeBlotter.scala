@@ -14,7 +14,7 @@ class TradeBlotter extends CometActor with CometListener {
   protected def registerWith = TradeActivityServer
 
   override def lowPriority = {
-    case v : Vector[String] => trades = v; reRender();
+    case v : Vector[Trade] => trades = v.map(t => t.toString); reRender();
   }
 
   def render = "li *" #> trades & ClearClearable
