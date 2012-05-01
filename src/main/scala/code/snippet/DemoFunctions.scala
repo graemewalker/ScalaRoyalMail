@@ -10,10 +10,15 @@ import server.model.Underlying._
 class DemoFunctions {
 
   def initTradeSource = "#initTradeSourceButton [onclick]" #> SHtml.ajaxInvoke(() => {
-    println("\nInitialise Some Data....")
+    println("Initialise some Trades....")
+    new TradeSource()
+    JsCmds.Noop
+  })
+
+  def generateSomeMarketData = "#generateMarketData [onclick]" #> SHtml.ajaxInvoke(() => {
+    println("Generate some market sata....")
     new Thread() {
       override def run() {
-        new TradeSource()
         val marketTicks = List(Tick(HSBC, 70.0), Tick(HSBC, 72.0), Tick(HSBC, 75.0), Tick(HSBC, 76.0), Tick(HSBC, 81.0))
         val demoHelper = new DemoHelper()
         demoHelper.runTickSequence(marketTicks, 2000);
@@ -23,7 +28,7 @@ class DemoFunctions {
   })
 
   def printTradeStoreContents = "#printTradeStoreStatusButton [onclick]" #> SHtml.ajaxInvoke(() => {
-    println("\nAll Trades in trade store...")
+    println("All Trades in trade store...")
     val trades = TradeStore.trades
     println(trades)
     JsCmds.Alert("Trades : " + trades.toString())

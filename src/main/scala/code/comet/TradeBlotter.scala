@@ -20,6 +20,8 @@ class TradeBlotter extends CometActor with CometListener {
   //    t.toString
   //  }
 
+  def sortById(t1: Trade, t2: Trade) = (t1.id < t2.id)
+
   private var blotterTrades = Vector[Trade]()
   protected def registerWith = TradeActivityServer
 
@@ -29,28 +31,30 @@ class TradeBlotter extends CometActor with CometListener {
 //      blotterTrades = newTrades.map(t => t.toString)
       blotterTrades = newTrades
       println("*** lowPriority update call " + blotterTrades.size);
-      reRender()
+      reRender(false)
 //      partialUpdate(SetHtml("time", Text("boom!")))
     }
   }
 
-  private def breachClass(trade: Trade) : String =  {
+  private def classesForTrade(trade: Trade) : String =  {
     trade match {
-      case g2: HasBarrier => if (g2.breached) "trade breached" else "trade"
+      case barrierTrade: HasBarrier if (barrierTrade.breached) => "trade breached"
       case _ => "trade"
     }
   }
 
   private def renderMessages =
     <div>
-      {blotterTrades.map(trade => <li class={breachClass(trade)}>{trade.toString}</li>)}
+      {blotterTrades.sortWith(sortById).map(trade => <li class={classesForTrade(trade)}>{trade.toString}</li>)}
     </div>
 
 //  def render = bind("messages" -> renderMessages)
 
   //  def render = "li *" #> JsCmds.SetHtml("<span>"+(Vector[String]() ++ trades.map(t => t.toString)) & ClearClearable
 //  def render = "li *" #> blotterTrades & "li [class]" #> "foo"
-  def render = renderMessages
+  def render = {
+    renderMessages
+  }
 
 //  def render = bind("li" ->
 //    SHtml.ajaxButton("Tock!", {

@@ -20,7 +20,7 @@ class TradeSource {
 
   TradeInputActor ! new TradeMessage("fromBob", "bob2", new Single("10005", CHEUNG, 81) with HasKnockOut)
 
-  TradeInputActor ! new TradeMessage("fromBob", "bob2", new Single("10006", HSBC, 60) with HasKnockOut)
+  TradeInputActor ! new TradeMessage("fromBob", "bob2", new Single("10006", HSBC, 80) with HasKnockOut)
 
   TradeInputActor ! new TradeMessage("fromBob", "bob2", new Basket("10007", List(CHEUNG, HSBC), 85) with HasKnockOut)
 

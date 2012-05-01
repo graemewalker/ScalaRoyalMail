@@ -2,15 +2,8 @@
 lift_proto.db.lock.db
 
 .idea/workspace.xml
-
-.idea/workspace.xml
-
-.idea/workspace.xml
-
 .DS_Store
-
 out/**/*
-
 out/*/**
-
 lift_proto.db.h2.db
+/*.db.trace.db
