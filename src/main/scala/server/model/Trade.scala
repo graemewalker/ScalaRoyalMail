@@ -11,6 +11,10 @@ sealed trait Trade {
   def underlyings: List[Underlying]
 
   def strikePrice: Double;
+
+  override def toString: String = {
+    "ID: " + id + ", Underlying(s): (" + underlyings.mkString(",") + "), Strike: " + strikePrice
+  }
 }
 
 case class Single(id: String, underlying: Underlying, strikePrice: Double) extends Trade {
@@ -26,6 +30,7 @@ sealed trait HasBarrier extends Trade with BarrierListener {
   this: Trade =>
 
   var breached: Boolean = false
+
   def description(): String;
 }
 
@@ -46,8 +51,8 @@ trait HasKnockOut extends HasBarrier with Trade {
     "Knock Out"
   }
 
-  override def toString(): String = {
-    super.toString + " breached = " + breached
+  override def toString: String = {
+    super.toString + ", breached: " + breached
   }
 
   // override def toString = "blah!"
