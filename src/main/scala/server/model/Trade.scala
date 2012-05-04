@@ -2,7 +2,7 @@ package server.model
 
 import scala._
 import code.comet.TradeActivityActor
-import server.BarrierListener
+import server.PriceChangeHandler
 import server.model.Underlying._
 
 sealed trait Trade {
@@ -23,7 +23,7 @@ case class BasketTrade(id: String, underlyings: List[Underlying], strikePrice: D
 
 // example of the use of self types to define the rules of which classes a trait can be mixed in with
 //would have been simpler to extend Trade.
-sealed trait HasBarrier extends Trade with BarrierListener {
+sealed trait HasBarrier extends Trade with PriceChangeHandler {
   // todo must be extended by stuff that has an underlying?
   this: Trade =>
 
@@ -35,7 +35,7 @@ sealed trait HasBarrier extends Trade with BarrierListener {
 trait HasKnockOut extends HasBarrier with Trade {
 
   // TODO: make this confusing as hell and use a case?
-  override def changed(price: Double) {
+  override def handlePriceChange(price: Double) {
     if (breached)
       return
     if (price > strikePrice) {
@@ -56,8 +56,8 @@ trait HasKnockOut extends HasBarrier with Trade {
 
 trait HasKickIn extends HasBarrier with Trade {
 
-  override def changed(price: Double) {
-    println("HasKickIn.changed " + price)
+  override def handlePriceChange(price: Double) {
+    println("HasKickIn.handlePriceChange " + price)
   }
 
   override def description(): String = {

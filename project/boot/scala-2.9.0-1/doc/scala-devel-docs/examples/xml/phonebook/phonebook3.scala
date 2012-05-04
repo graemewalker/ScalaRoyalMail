@@ -8,7 +8,7 @@ object phonebook3 {
 
   /* this method "changes" (returns an updated copy) of the phonebook when the
    *   entry for Name exists. If it has an attribute "where" whose value is equal to the
-   *   parameter Where, it is changed, otherwise, it is added.
+   *   parameter Where, it is handlePriceChange, otherwise, it is added.
    */
   def change ( phonebook:Node, Name:String, Where:String, newPhone:String ) = {
 
@@ -42,7 +42,7 @@ object phonebook3 {
                 { ch1 }
               </entry>
               
-            } else {         // yes, and we changed it as we should
+            } else {         // yes, and we handlePriceChange it as we should
               
               <entry>
                 { ch2 }

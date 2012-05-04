@@ -13,7 +13,7 @@ object TradeStore {
     trades += trade;
 
     trade match{
-      case trade : HasBarrier => MarketDataPublisher.registerForUpdates(trade.underlyings, trade.changed)
+      case trade : HasBarrier => MarketDataPublisher.registerForUpdates(trade.underlyings, trade.handlePriceChange)
       case _ =>
     }
 

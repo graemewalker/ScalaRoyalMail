@@ -3,18 +3,17 @@ package server
 import actors.Actor
 
 // case classes for the message type give type safety to parameters during refactoring.  i.e. change price to Int below
-case class Changed(price: Double)
+case class Change(price: Double)
 
-trait BarrierListener extends Actor {
+trait PriceChangeHandler extends Actor {
 
   def act() {
     loop {
       react {
-        case Changed(price) => changed(price)
+        case Change(price) => handlePriceChange(price)
       }
     }
   }
 
-  def changed(price: Double)
-
+  def handlePriceChange(price: Double)
 }

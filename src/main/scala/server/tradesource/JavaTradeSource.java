@@ -26,7 +26,7 @@ public class JavaTradeSource extends Thread {
 
     }
 
-    /*class TradeWithKnockout extends BasketTrade implements HasKnockOut, HasBarrier, BarrierListener{
+    /*class TradeWithKnockout extends BasketTrade implements HasKnockOut, HasBarrier, PriceChangeHandler{
 
         private boolean breached;
 
@@ -35,8 +35,8 @@ public class JavaTradeSource extends Thread {
         }
 
         @Override
-        public void changed(double price){
-            HasKnockOut$class.changed(this, price);
+        public void handlePriceChange(double price){
+            HasKnockOut$class.handlePriceChange(this, price);
         }
 
         @Override
@@ -56,7 +56,7 @@ public class JavaTradeSource extends Thread {
 
         @Override
         public void act(){
-            BarrierListener$class.act(this);
+            PriceChangeHandler$class.act(this);
         }
 
         @Override
