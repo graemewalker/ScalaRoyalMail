@@ -3,7 +3,7 @@ package server.model.store
 import collection.immutable.HashMap
 import server.model.{HasBarrier, Trade}
 import server.MarketDataPublisher
-import code.comet.TradeActivityListener
+import code.comet.TradeActivityActor
 
 object TradeStore {
 
@@ -17,7 +17,7 @@ object TradeStore {
       case _ =>
     }
 
-    TradeActivityListener ! trade
+    TradeActivityActor ! trade
     //Notify the gui that a trade has been added via the listener pattern (using Trait loveliness)
   }
 

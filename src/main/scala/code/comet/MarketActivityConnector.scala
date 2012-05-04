@@ -6,7 +6,7 @@ import server.{Tick, MarketDataPublisher}
 class MarketActivityConnector extends CometActor with CometListener {
   private var ticks = List[Tick]()
 
-  protected def registerWith = MarketActivityListenter
+  protected def registerWith = MarketActivityActor
 
   def render = {
     <div>{printHead(ticks) ++ printRest(ticks)}</div>

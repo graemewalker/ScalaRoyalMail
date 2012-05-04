@@ -6,9 +6,9 @@ import net.liftweb.http.SHtml
 import server.model.store.TradeStore
 import server.tradesource.ScalaTradeSource
 import server.model.Underlying._
-import server.{DemoHelper, Tick}
+import server.{MarketDataPublisher, Tick}
 
-class DemoFunctions {
+class DemoSnippet {
 
   def initTradeSource = "#initTradeSourceButton [onclick]" #> SHtml.ajaxInvoke(() => {
     println("Create / reset demo Trades....")
@@ -20,12 +20,23 @@ class DemoFunctions {
     println("Generate some market data....")
     new Thread() {
       override def run() {
-        val hsbcPrices = Range.Double(70, 85, 0.5).toList
-        val hsbcTicks = hsbcPrices.map( price => new Tick(HSBC, price))
-        new DemoHelper().runTickSequence(hsbcTicks, 2000);
+        runTickSequence(createMarketTicks(), 2000);
       }
     }.start()
   })
+
+  def createMarketTicks(): List[Tick] = {
+    val hsbcPrices = Range.Double(70, 85, 0.5).toList
+    hsbcPrices.map( price => new Tick(HSBC, price))
+  }
+
+  def runTickSequence(ticks: List[Tick], interval: Long) {
+    ticks.foreach {
+      tick =>
+        MarketDataPublisher.tick(tick)
+        Thread.sleep(interval)
+    }
+  }
 
   def printTradeStoreContents = "#printTradeStoreStatusButton [onclick]" #> SHtml.ajaxInvoke(() => {
     println("All Trades in trade store...")

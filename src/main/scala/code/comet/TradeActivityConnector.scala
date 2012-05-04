@@ -14,7 +14,7 @@ class TradeActivityConnector extends CometActor with CometListener {
 
   private var blotterTrades = Vector[Trade]()
 
-  protected def registerWith = TradeActivityListener
+  protected def registerWith = TradeActivityActor
 
   override def lowPriority = {
     case newTrades: Vector[Trade] => {

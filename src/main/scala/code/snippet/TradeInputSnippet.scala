@@ -13,7 +13,7 @@ import server.model.{Underlying, SingleTrade}
 import server.{TradeMessage, TradeRoutingActor}
 import net.liftweb.common.Empty
 
-object TradeInput {
+object TradeInputSnippet {
 
   object id extends RequestVar("")
   object strike extends RequestVar("")
