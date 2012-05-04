@@ -17,7 +17,7 @@ object TradeInput {
 
   object id extends RequestVar("")
   object strike extends RequestVar("")
-  object underlying extends RequestVar("")
+  object underlying extends RequestVar(Underlying.CLP)
 
   def add(xhtml : NodeSeq) : NodeSeq = {
 
@@ -26,10 +26,10 @@ object TradeInput {
 
       try {
         val strikeDouble = strike.is.toDouble
-        TradeInputActor ! TradeMessage("gui", "????", SingleTrade(id.is, Underlying.withName(underlying.is), strikeDouble))
+        TradeInputActor ! TradeMessage("gui", "????", SingleTrade(id.is, underlying, strikeDouble))
       }
       catch {
-        case e: NumberFormatException => S.error("strike", "Invalid number ["+strike+"]")
+        case e: NumberFormatException => S.error("strike", "Invalid number '"+strike+"'")
       }
     }
 
@@ -38,9 +38,13 @@ object TradeInput {
     bind("entry", xhtml,
       "id" -> SHtml.text(id.is, id.set(_)),
       "strike" -> SHtml.text(strike, strike.set(_)),
-      "underlying" -> SHtml.select(underlyings, Empty, underlying.set(_)),
+      "underlying" -> SHtml.select(underlyings, Empty, setUnderlying(_)),
       "submit" -> submit("Submit", processEntryAdd)
     )
   }
 
+  def setUnderlying(s: String): Any = {
+    underlying.set( Underlying.withName(s) )
+  }
 }
+
