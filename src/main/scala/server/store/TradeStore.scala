@@ -2,7 +2,7 @@ package server.model.store
 
 import collection.immutable.HashMap
 import server.model.{HasBarrier, Trade}
-import server.MarketDataFeed
+import server.MarketDataPublisher
 import code.comet.TradeActivityListener
 
 object TradeStore {
@@ -13,7 +13,7 @@ object TradeStore {
     trades += trade;
 
     trade match{
-      case trade : HasBarrier => MarketDataFeed.registerForUpdates(trade.underlyings, trade.changed)
+      case trade : HasBarrier => MarketDataPublisher.registerForUpdates(trade.underlyings, trade.changed)
       case _ =>
     }
 

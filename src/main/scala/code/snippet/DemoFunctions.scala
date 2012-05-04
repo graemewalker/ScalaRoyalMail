@@ -4,14 +4,15 @@ import net.liftweb.util.Helpers._
 import net.liftweb.http.js.JsCmds
 import net.liftweb.http.SHtml
 import server.model.store.TradeStore
-import server.{Tick, DemoHelper, TradeSource}
+import server.tradesource.ScalaTradeSource
 import server.model.Underlying._
+import server.{DemoHelper, Tick}
 
 class DemoFunctions {
 
   def initTradeSource = "#initTradeSourceButton [onclick]" #> SHtml.ajaxInvoke(() => {
     println("Create / reset demo Trades....")
-    new TradeSource()
+    new ScalaTradeSource()
     JsCmds.Noop
   })
 

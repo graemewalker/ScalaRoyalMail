@@ -1,7 +1,7 @@
 package code.controls
 
 import server.model.Underlying._
-import server.{DemoHelper, Tick}
+import server.{Tick}
 import net.liftweb.http.js.JsCmds
 
 object Controls {

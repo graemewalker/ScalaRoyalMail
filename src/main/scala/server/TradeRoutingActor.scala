@@ -7,7 +7,7 @@ import model.store.TradeStore
 
 case class TradeMessage(origin: String, extRef: String, tradeDetails: Trade);
 
-object TradeInputActor extends Actor {
+object TradeRoutingActor extends Actor {
   def act() {
     loop {
       receive {

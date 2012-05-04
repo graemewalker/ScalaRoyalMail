@@ -6,7 +6,7 @@ class DemoHelper {
   def runTickSequence(ticks: List[Tick], interval: Long) {
         ticks.foreach {
           tick =>
-            MarketDataFeed.tick(tick)
+            MarketDataPublisher.tick(tick)
             Thread.sleep(interval)
         }
   }

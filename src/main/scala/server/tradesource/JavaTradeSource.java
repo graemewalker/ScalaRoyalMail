@@ -1,8 +1,10 @@
-package server;
+package server.tradesource;
 
 import org.specs.collection.JavaCollectionsConversion;
 import scala.Enumeration;
 import scala.collection.immutable.List;
+import server.TradeRoutingActor;
+import server.TradeMessage;
 import server.model.BasketTrade;
 import server.model.Underlying;
 
@@ -16,10 +18,10 @@ public class JavaTradeSource extends Thread {
 
         List<Enumeration.Value> scalaUnderlyingsList = JavaCollectionsConversion.javaArrayToList(underlyings);
 
-        TradeInputActor.$bang
+        TradeRoutingActor.$bang
                 (new TradeMessage("JavaTradeSource", "J1", new BasketTrade("J11", scalaUnderlyingsList, 77.5)));
 
-//        TradeInputActor.$bang
+//        TradeRoutingActor$.$bang
   //              (new TradeMessage("JavaTradeSource", "J1", new TradeWithKnockout("J11", scalaUnderlyingsList, 77.5)));
 
     }

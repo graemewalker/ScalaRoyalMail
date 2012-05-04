@@ -22,7 +22,7 @@
 ////basketMatcher(basketProduct, basketProductWithKi, singleProduct)
 //
 //val demoHelper = new DemoHelper()
-//val tradeSource = new TradeSource();
+//val tradeSource = new ScalaTradeSource();
 //val javaTradeSource = new JavaTradeSource()
 //
 //val demoMarketTicks = Tick(HSBC, 70.0) :: Tick(HSBC, 72.0) :: Tick(HSBC, 75.0) :: Tick(HSBC, 76.0) :: Tick(HSBC, 81.0) :: Nil
@@ -34,11 +34,11 @@
 ////  println("Got called back")
 ////}
 ////
-////MarketDataFeed.registerForUpdates( List("Lloy.L"), myCallback)
+////MarketDataPublisher$.registerForUpdates( List("Lloy.L"), myCallback)
 ////
-////MarketDataFeed.registerForUpdates( List("Lloy.L"), myCallback)
+////MarketDataPublisher$.registerForUpdates( List("Lloy.L"), myCallback)
 ////
-////MarketDataFeed.registerForUpdates( List("xxxxx"), myCallback)
+////MarketDataPublisher$.registerForUpdates( List("xxxxx"), myCallback)
 ////
-////MarketDataFeed.notifyListenersOfTick("Lloy.L", 101.1)
+////MarketDataPublisher$.notifyListenersOfTick("Lloy.L", 101.1)
 ////

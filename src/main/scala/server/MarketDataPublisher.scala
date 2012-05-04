@@ -6,7 +6,7 @@ import code.comet.MarketActivityListenter
 
 case class Tick(underlying: Underlying, price: Double)
 
-object MarketDataFeed {
+object MarketDataPublisher {
   type Callback = Double => Unit;
 
   // Look, only defining the type once!
@@ -40,7 +40,4 @@ object MarketDataFeed {
     getCurrentListenersOrEmptyList(tick.underlying).foreach(callback => callback(tick.price))
     MarketActivityListenter ! tick
   }
-
-
-
 }

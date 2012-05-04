@@ -10,7 +10,7 @@ import js.JsCmds._
 import net.liftweb.common._
 import net.liftweb.http.SHtml
 import server.model.{Underlying, SingleTrade}
-import server.{TradeMessage, TradeInputActor}
+import server.{TradeMessage, TradeRoutingActor}
 import net.liftweb.common.Empty
 
 object TradeInput {
@@ -26,7 +26,7 @@ object TradeInput {
 
       try {
         val strikeDouble = strike.is.toDouble
-        TradeInputActor ! TradeMessage("gui", "????", SingleTrade(id.is, underlying, strikeDouble))
+        TradeRoutingActor ! TradeMessage("gui", "????", SingleTrade(id.is, underlying, strikeDouble))
       }
       catch {
         case e: NumberFormatException => S.error("strike", "Invalid number '"+strike+"'")

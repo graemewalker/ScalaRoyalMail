@@ -1,7 +1,7 @@
 package code.comet
 
 import net.liftweb.http.{CometListener, CometActor}
-import server.{Tick, MarketDataFeed}
+import server.{Tick, MarketDataPublisher}
 
 class MarketActivityConnector extends CometActor with CometListener {
   private var ticks = List[Tick]()
