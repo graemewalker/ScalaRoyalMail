@@ -26,8 +26,8 @@ class TradeBlotter extends CometActor with CometListener {
 
   private def classesFor(trade: Trade): String = {
     trade match {
-      case barrierTrade: HasBarrier if (barrierTrade.breached) => "breached"
-      case _ => ""
+      case barrierTrade: HasBarrier if (barrierTrade.breached) => "trade breached"
+      case _ => "trade"
     }
   }
 
