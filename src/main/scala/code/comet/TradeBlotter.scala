@@ -31,16 +31,15 @@ class TradeBlotter extends CometActor with CometListener {
     }
   }
 
-  // Create HTML for inserting approach
-  //  private def renderMessages =
-  //    <div>
-  //      Updated: {new DateTime}
-  //      {blotterTrades.map(trade => <li class={classesFor(trade)}>{trade.toString}</li>)}
-  //    </div>
-  //  def render = renderMessages
+  def render = firstClassXmlStyle
+  //def render = renderCssSelectorStyle
 
-  // template css substitution
-  def render = {
+  private def firstClassXmlStyle =
+    <div>
+        {blotterTrades.map(trade => <li class={classesFor(trade)}>{trade.toString}</li>)}
+    </div>
+
+  def renderCssSelectorStyle = {
     "div *" #> blotterTrades.map(trade =>
       ".trade *" #> trade.toString &
         ".trade [class+]" #> classesFor(trade)
