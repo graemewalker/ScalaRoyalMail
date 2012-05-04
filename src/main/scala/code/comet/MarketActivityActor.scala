@@ -13,7 +13,9 @@ object MarketActivityActor extends LiftActor with ListenerManager {
   def createUpdate = ticks
 
   override def lowPriority = {
-    case tick: Tick => ticks ::= tick; updateListeners(); println("MarketActivityActort update: ticks = " + ticks.size)
+    case tick: Tick => {
+      ticks ::= tick
+      updateListeners()
+    }
   }
-
 }
