@@ -19,9 +19,9 @@ class DemoFunctions {
     println("Generate some market data....")
     new Thread() {
       override def run() {
-        val marketTicks = List(Tick(HSBC, 70.0), Tick(HSBC, 72.0), Tick(HSBC, 75.0), Tick(HSBC, 76.0), Tick(HSBC, 81.0))
-        val demoHelper = new DemoHelper()
-        demoHelper.runTickSequence(marketTicks, 2000);
+        val hsbcPrices = Range.Double(70, 85, 0.5).toList
+        val hsbcTicks = hsbcPrices.map( price => new Tick(HSBC, price))
+        new DemoHelper().runTickSequence(hsbcTicks, 2000);
       }
     }.start()
   })
