@@ -26,17 +26,17 @@ class TradeBlotter extends CometActor with CometListener {
 
   private def classesFor(trade: Trade): String = {
     trade match {
-      case barrierTrade: HasBarrier if (barrierTrade.breached) => "trade breached"
-      case _ => "trade"
+      case barrierTrade: HasBarrier if (barrierTrade.breached) => "breached"
+      case _ => ""
     }
   }
 
-  def render = firstClassXmlStyle
-  //def render = renderCssSelectorStyle
+//  def render = firstClassXmlStyle
+  def render = renderCssSelectorStyle
 
   private def firstClassXmlStyle =
     <div>
-        {blotterTrades.map(trade => <li class={classesFor(trade)}>{trade.toString}</li>)}
+        {blotterTrades.map(trade => <div class={classesFor(trade)}>{trade.toString}</div>)}
     </div>
 
   def renderCssSelectorStyle = {
