@@ -28,6 +28,8 @@ class ScalaTradeSource {
 
 
 
+
+
   //  def runThisForever( f: => Unit){
   //    while(true){
   //      Thread.sleep(2000);

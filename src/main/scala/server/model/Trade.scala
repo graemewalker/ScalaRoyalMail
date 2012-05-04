@@ -5,7 +5,8 @@ import code.comet.TradeActivityActor
 import server.PriceChangeHandler
 import server.model.Underlying._
 
-sealed trait Trade {
+// could also be a Trait
+abstract class Trade {
   def id: String;
   def underlyings: List[Underlying]
   def strikePrice: Double;
@@ -21,16 +22,17 @@ case class SingleTrade(id: String, underlying: Underlying, strikePrice: Double) 
 
 case class BasketTrade(id: String, underlyings: List[Underlying], strikePrice: Double) extends Trade
 
-// example of the use of self types to define the rules of which classes a trait can be mixed in with
-// would have been simpler to extend Trade?
-sealed trait HasBarrier extends Trade with PriceChangeHandler {
+// example of the use of self types to define the rules of which classes a trait can be mixed in with (see PlayScript.scala for FakeTrade)
+trait HasBarrier extends Trade with PriceChangeHandler {
+  self: Trade =>
 
   var breached: Boolean = false
 
   def description(): String;
 }
 
-trait HasKnockOut extends HasBarrier with Trade {
+// Removing Trade here will cause a compile error, due to HasBarrier bounding against Trade
+trait HasKnockOut extends HasBarrier {
 
   override def handlePriceChange(price: Double) {
     if (breached)
@@ -51,7 +53,7 @@ trait HasKnockOut extends HasBarrier with Trade {
   }
 }
 
-trait HasKickIn extends HasBarrier with Trade {
+trait HasKickIn extends HasBarrier {
 
   override def handlePriceChange(price: Double) {
     println("HasKickIn.handlePriceChange " + price)

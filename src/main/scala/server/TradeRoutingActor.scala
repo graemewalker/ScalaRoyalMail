@@ -11,6 +11,8 @@ object TradeRoutingActor extends Actor {
   def act() {
     loop {
       receive {
+
+        //examples of pattern matching can also use conditional checking
         case message: TradeMessage => {
           message.tradeDetails match {
             case ko: HasKickIn => sendToExceptionQueue("Unsupported Barrier Type ")
@@ -29,11 +31,9 @@ object TradeRoutingActor extends Actor {
 
   def sendToExceptionQueue(msg: String) {
     println("Adding to Exception queue: " + msg)
+    // Do something...
   }
 
-
+  // This must be called or the Actor will do nothing and message will appear as if they are vanishing into thin air
   this.start()
 }
-
-
-//case kicker @(_: HasKnockOut | _: HasKickIn) => println(kicker)
