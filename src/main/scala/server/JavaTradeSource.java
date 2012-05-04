@@ -1,36 +1,28 @@
 package server;
 
+import org.specs.collection.JavaCollectionsConversion;
 import scala.Enumeration;
-import scala.Function0;
-import scala.actors.Actor$class;
 import scala.collection.immutable.List;
-import scala.runtime.BoxedUnit;
-import server.model.*;
+import server.model.BasketTrade;
+import server.model.Underlying;
 
-//import org.specs.collection.JavaCollectionsConversion;
+public class JavaTradeSource extends Thread {
 
-import java.util.ArrayList;
+    public JavaTradeSource() {
+        Enumeration.Value[] underlyings = new Enumeration.Value[]{
+                Underlying.HSBC()
+        };
 
-public class JavaTradeSource extends Thread{
-//
-//    public JavaTradeSource(){
-//        Enumeration.Value[] underlyings = new Enumeration.Value[]{
-//            Underlying.HSBC()
-//        };
-//
-//
-//
-//        List<Enumeration.Value> scalaUnderlyingsList = JavaCollectionsConversion.javaArrayToList(underlyings);
-//
+
+        List<Enumeration.Value> scalaUnderlyingsList = JavaCollectionsConversion.javaArrayToList(underlyings);
+
+        TradeInputActor.$bang
+                (new TradeMessage("JavaTradeSource", "J1", new BasketTrade("J11", scalaUnderlyingsList, 77.5)));
+
 //        TradeInputActor.$bang
-//                (new TradeMessage("JavaTradeSource", "J1", new BasketTrade("J11", scalaUnderlyingsList, 77.5)));
+  //              (new TradeMessage("JavaTradeSource", "J1", new TradeWithKnockout("J11", scalaUnderlyingsList, 77.5)));
 
- /*       TradeInputActor.$bang
-                (new TradeMessage("JavaTradeSource", "J1", new TradeWithKnockout("J11", scalaUnderlyingsList, 77.5)));
-
-*/
-
-//    }
+    }
 
     /*class TradeWithKnockout extends BasketTrade implements HasKnockOut, HasBarrier, BarrierListener{
 
