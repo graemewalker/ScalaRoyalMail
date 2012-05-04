@@ -17,11 +17,11 @@ sealed trait Trade {
   }
 }
 
-case class Single(id: String, underlying: Underlying, strikePrice: Double) extends Trade {
+case class SingleTrade(id: String, underlying: Underlying, strikePrice: Double) extends Trade {
   def underlyings = List(underlying);
 }
 
-case class Basket(id: String, underlyings: List[Underlying], strikePrice: Double) extends Trade
+case class BasketTrade(id: String, underlyings: List[Underlying], strikePrice: Double) extends Trade
 
 // example of the use of self types to define the rules of which classes a trait can be mixed in with
 //would have been simpler to extend Trade.

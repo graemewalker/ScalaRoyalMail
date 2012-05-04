@@ -3,13 +3,13 @@
 //import server.model.Underlying._
 //;
 //
-////val singleProduct = Single("single1", Underlying.CHEUNG);
+////val singleProduct = SingleTrade("single1", Underlying.CHEUNG);
 ////println(singleProduct)
 ////
-////val basketProduct = new Basket("multiple1", (CHEUNG :: CLP :: Nil));
+////val basketProduct = new BasketTrade("multiple1", (CHEUNG :: CLP :: Nil));
 ////println(basketProduct)
 ////
-////val basketProductWithKi = new Basket("multiple1", List(CLP, HSBC)) with HasKnockOut;
+////val basketProductWithKi = new BasketTrade("multiple1", List(CLP, HSBC)) with HasKnockOut;
 ////println(basketProduct)
 ////
 ////def basketMatcher(t: Trade*) {

@@ -1,15 +1,28 @@
-<div id="main" class="lift:surround?with=default;at=content">
-    <div class="lift:DemoFunctions.initTradeSource">
-        <button id="initTradeSourceButton">Init/Reset Trades</button>
-    </div>
+<div id="main" class="lift:surround?with=default;at=content" xmlns:entry="http://www.w3.org/1999/xhtml">
+<style type=text/css>
+    .inputLabel{
+        width: 100px;
+        font-weight: bold;
+        float: left;
+    }
+</style>
 
-    <div class="lift:DemoFunctions.generateSomeMarketData">
-        <button id="generateMarketData">Generate Market Data</button>
-    </div>
+    <lift:snippet type="TradeInput:add" form="POST">
 
-    <div class="lift:DemoFunctions.printTradeStoreContents">
-        <button id="printTradeStoreStatusButton">Alert - Current Trades</button>
-    </div>
+        <div>
+            <span class="inputLabel">ID:</span> <entry:id>default</entry:id>
+        </div>
+
+        <div>
+            <span class="inputLabel">Underlying:</span>  <entry:underlying></entry:underlying>
+        </div>
+
+        <div>
+            <span class="inputLabel">Strike:</span>  <entry:strike></entry:strike>
+        </div>
+        <entry:submit/>
+
+    </lift:snippet>
 </div>
 
 

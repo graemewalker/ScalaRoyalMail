@@ -23,7 +23,7 @@ public class JavaTradeSource extends Thread{
 //        List<Enumeration.Value> scalaUnderlyingsList = JavaCollectionsConversion.javaArrayToList(underlyings);
 //
 //        TradeInputActor.$bang
-//                (new TradeMessage("JavaTradeSource", "J1", new Basket("J11", scalaUnderlyingsList, 77.5)));
+//                (new TradeMessage("JavaTradeSource", "J1", new BasketTrade("J11", scalaUnderlyingsList, 77.5)));
 
  /*       TradeInputActor.$bang
                 (new TradeMessage("JavaTradeSource", "J1", new TradeWithKnockout("J11", scalaUnderlyingsList, 77.5)));
@@ -32,7 +32,7 @@ public class JavaTradeSource extends Thread{
 
 //    }
 
-    /*class TradeWithKnockout extends Basket implements HasKnockOut, HasBarrier, BarrierListener{
+    /*class TradeWithKnockout extends BasketTrade implements HasKnockOut, HasBarrier, BarrierListener{
 
         private boolean breached;
 
