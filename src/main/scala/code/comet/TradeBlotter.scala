@@ -20,14 +20,13 @@ class TradeBlotter extends CometActor with CometListener {
     case newTrades: Vector[Trade] => {
       blotterTrades = newTrades.sortWith(sortById)
       reRender(false)
-      //      partialUpdate(SetHtml("time", Text("boom!")))
     }
   }
 
   private def classesFor(trade: Trade): String = {
     trade match {
       case barrierTrade: HasBarrier if (barrierTrade.breached) => "breached"
-      case _ => ""
+      case _ => "" // TODO: remove?
     }
   }
 
@@ -36,7 +35,7 @@ class TradeBlotter extends CometActor with CometListener {
 
   private def firstClassXmlStyle =
     <div>
-        {blotterTrades.map(trade => <div class={classesFor(trade)}>{trade.toString}</div>)}
+      {blotterTrades.map(trade => <div class={classesFor(trade)}>{trade.toString}</div>)}
     </div>
 
   def renderCssSelectorStyle = {

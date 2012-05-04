@@ -2,6 +2,7 @@ package server
 
 import collection.immutable.HashMap
 import model.Underlying._
+import code.comet.MarketTicksActivityServer
 
 case class Tick(underlying: Underlying, price: Double)
 
@@ -37,6 +38,7 @@ object MarketDataFeed {
     println("\n>>> MARKET MOVING >>>")
     println(tick.underlying + " @" + tick.price)
     getCurrentListenersOrEmptyList(tick.underlying).foreach(callback => callback(tick.price))
+    MarketTicksActivityServer ! tick
   }
 
 
