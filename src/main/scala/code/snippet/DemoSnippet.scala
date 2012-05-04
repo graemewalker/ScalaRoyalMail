@@ -25,9 +25,12 @@ class DemoSnippet {
     }.start()
   })
 
+  //Ranges example
   def createMarketTicks(): List[Tick] = {
-    val hsbcPrices = Range.Double(70, 85, 0.5).toList
-    hsbcPrices.map( price => new Tick(HSBC, price))
+    val hsbcPrices = 70.0 until 85.0 by 0.5
+    // Or Range.Double(70, 85, 0.5).toList
+
+    hsbcPrices.map( price => new Tick(HSBC, price)).toList
   }
 
   def runTickSequence(ticks: List[Tick], interval: Long) {
@@ -42,6 +45,8 @@ class DemoSnippet {
     println("All Trades in trade store...")
     val trades = TradeStore.trades
     println(trades)
+
+    //Example of Javascript functions
     JsCmds.Alert("Trades : " + trades.toString)
   })
 
