@@ -5,7 +5,7 @@ import net.liftweb._
 import http._
 import server.model.{HasBarrier, Trade}
 
-class TradeBlotter extends CometActor with CometListener {
+class TradeActivityConnector extends CometActor with CometListener {
   //  implicit def tradeToString(t: Trade): String = {
   //    t.toString
   //  }
@@ -14,7 +14,7 @@ class TradeBlotter extends CometActor with CometListener {
 
   private var blotterTrades = Vector[Trade]()
 
-  protected def registerWith = TradeActivityServer
+  protected def registerWith = TradeActivityListener
 
   override def lowPriority = {
     case newTrades: Vector[Trade] => {

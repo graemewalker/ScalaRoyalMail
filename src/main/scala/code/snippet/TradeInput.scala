@@ -33,7 +33,6 @@ object TradeInput {
       }
     }
 
-
     val underlyings: List[(String, String)] = Underlying.values.toList.map(ul => (ul.toString, ul.toString))
     bind("entry", xhtml,
       "id" -> SHtml.text(id.is, id.set(_)),

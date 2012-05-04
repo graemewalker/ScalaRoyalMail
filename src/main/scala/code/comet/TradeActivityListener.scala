@@ -5,7 +5,7 @@ import net.liftweb.actor.LiftActor
 import server.model.Trade
 import collection.immutable.HashMap
 
-object TradeActivityServer extends LiftActor with ListenerManager{
+object TradeActivityListener extends LiftActor with ListenerManager{
 
   private var trades = Map[String, Trade]()
 

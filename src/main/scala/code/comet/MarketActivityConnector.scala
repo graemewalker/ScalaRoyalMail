@@ -3,10 +3,10 @@ package code.comet
 import net.liftweb.http.{CometListener, CometActor}
 import server.{Tick, MarketDataFeed}
 
-class MarketTicks extends CometActor with CometListener {
+class MarketActivityConnector extends CometActor with CometListener {
   private var ticks = List[Tick]()
 
-  protected def registerWith = MarketTicksActivityServer
+  protected def registerWith = MarketActivityListenter
 
   def render = {
     <div>{printHead(ticks) ++ printRest(ticks)}</div>
