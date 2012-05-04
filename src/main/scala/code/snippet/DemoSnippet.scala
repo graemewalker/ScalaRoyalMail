@@ -20,7 +20,7 @@ class DemoSnippet {
     println("Generate some market data....")
     new Thread() {
       override def run() {
-        runTickSequence(createMarketTicks(), 2000);
+        runTickSequence(createMarketTicks(), 1200);
       }
     }.start()
   })

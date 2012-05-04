@@ -6,9 +6,9 @@ import http._
 import server.model.{HasBarrier, Trade}
 
 class TradeActivityConnector extends CometActor with CometListener {
-  //  implicit def tradeToString(t: Trade): String = {
-  //    t.toString
-  //  }
+
+  // Implicit def to convert a Trade to a String
+  implicit def tradeToString(t: Trade): String = { t.toString() }
 
   def sortById(t1: Trade, t2: Trade) = (t1.id < t2.id)
 
@@ -23,44 +23,28 @@ class TradeActivityConnector extends CometActor with CometListener {
     }
   }
 
-  private def classesFor(trade: Trade): String = {
-    trade match {
-      case barrierTrade: HasBarrier if (barrierTrade.breached) => "breached"
-      case _ => "" // TODO: remove?
-    }
-  }
-
+  // 2 Examples of generating the XHTML
 //  def render = firstClassXmlStyle
   def render = renderCssSelectorStyle
 
   private def firstClassXmlStyle =
     <div>
-      {blotterTrades.map(trade => <div class={classesFor(trade)}>{trade.toString}</div>)}
+      {blotterTrades.map(trade => <div class={classesFor(trade).getOrElse("")}>{trade}</div>)}
     </div>
 
   def renderCssSelectorStyle = {
     "div *" #> blotterTrades.map(trade =>
-      ".trade *" #> trade.toString &
+      ".trade *" #> trade &
         ".trade [class+]" #> classesFor(trade)
     )
   }
 
-  //  def render = {
-  //    "type=submit" #> SHtml.submit("Register", process,
-  //      "onclick" -> JsIf(JsEq(ValById("first_name"), ""), Alert("alert") & JsReturn(false)).toJsCmd)
-  //  }
-
-  //  def render = bind("li" ->
-  //    SHtml.ajaxButton("Tock!", {
-  //      () => ClockMaster ! Tick
-  //      Noop
-  //    }
-  //    )
-
-  //  def render = "li *" #> JsCmds.SetHtml("<span>"+(Vector[String]() ++ trades.map(t => t.toString)) & ClearClearable
-  //  def render = "li *" #> blotterTrades & "li [class]" #> "foo"
-  //  def render = {
-  //    bind("tradeBlotter", "messages" -> renderMessages)
-  //  }
+  // Example of use of Something and None Options
+  private def classesFor(trade: Trade): Option[String] = {
+    trade match {
+      case barrierTrade: HasBarrier if (barrierTrade.breached) => Some("breached")
+      case _ => None
+    }
+  }
 
 }

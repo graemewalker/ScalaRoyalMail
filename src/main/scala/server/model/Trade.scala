@@ -22,10 +22,8 @@ case class SingleTrade(id: String, underlying: Underlying, strikePrice: Double) 
 case class BasketTrade(id: String, underlyings: List[Underlying], strikePrice: Double) extends Trade
 
 // example of the use of self types to define the rules of which classes a trait can be mixed in with
-//would have been simpler to extend Trade.
+// would have been simpler to extend Trade?
 sealed trait HasBarrier extends Trade with PriceChangeHandler {
-  // todo must be extended by stuff that has an underlying?
-  this: Trade =>
 
   var breached: Boolean = false
 
@@ -34,7 +32,6 @@ sealed trait HasBarrier extends Trade with PriceChangeHandler {
 
 trait HasKnockOut extends HasBarrier with Trade {
 
-  // TODO: make this confusing as hell and use a case?
   override def handlePriceChange(price: Double) {
     if (breached)
       return
@@ -64,9 +61,6 @@ trait HasKickIn extends HasBarrier with Trade {
     "Kick In"
   }
 }
-
-
-
 
 
 
