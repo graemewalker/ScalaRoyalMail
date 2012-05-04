@@ -9,11 +9,16 @@ class MarketTicks extends CometActor with CometListener {
   protected def registerWith = MarketTicksActivityServer
 
   def render = {
-    <div>{ticks.take(6).map(tick => printTick(tick))}</div>
+    <div>{printHead(ticks) ++ printRest(ticks)}</div>
   }
 
-  def printTick(tick: Tick): String = {
-    " ** " + tick.underlying + ":" + tick.price
+  def printHead(ticks: List[Tick]) = {
+    <span class="latestTick">{" ** " + ticks.head.underlying + ":" + ticks.head.price}</span>
+  }
+
+  def printRest(ticks: List[Tick]) = {
+    ticks.tail.take(5).map(tick => <span>{" ** " + tick.underlying + ":" + tick.price}</span>)
+
   }
 
   override def lowPriority = {
