@@ -33,7 +33,7 @@ object TradeInputSnippet {
 
       try {
         val strikeDouble = strike.is.toDouble
-        TradeRoutingActor ! TradeMessage("gui", "????", SingleTrade(id.is, underlying, strikeDouble))
+        TradeRoutingActor ! TradeMessage("gui", "someRef", SingleTrade(id.is, underlying, strikeDouble))
       }
       catch {
         case e: NumberFormatException => S.error("strike", "Invalid number '"+strike+"'")
@@ -45,9 +45,9 @@ object TradeInputSnippet {
     }
 
     bind("entry", xhtml,
-      "id" -> SHtml.text(id.is, id.set(_)),
-      "strike" -> SHtml.text(strike, strike.set(_)),
-      "underlying" -> SHtml.select(underlyings, Empty, setUnderlying(_)),
+      "id" -> text(id.is, id.set(_)),
+      "strike" -> text(strike, strike.set(_)),
+      "underlying" -> select(underlyings, Empty, setUnderlying(_)),
       "submit" -> submit("Submit", processEntryAdd)
     )
   }
