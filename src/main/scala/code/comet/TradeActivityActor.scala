@@ -12,7 +12,9 @@ object TradeActivityActor extends LiftActor with ListenerManager{
   def createUpdate = Vector[Trade]() ++ trades.values
 
   override def lowPriority = {
-    case trade : Trade => trades += (trade.id -> trade); updateListeners(); println("Activity server got  update: trades size = " + trades.size)
+    case trade : Trade => {
+      trades += (trade.id -> trade)
+      updateListeners();
+    }
   }
-
 }
